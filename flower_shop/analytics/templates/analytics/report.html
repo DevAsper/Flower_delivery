@@ -1,0 +1,10 @@
+<!-- apps/analytics/templates/analytics/report.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Report for {{ report.date }}</h1>
+  <p>Total Sales: ${{ report.total_sales }}</p>
+  <p>Total Profit: ${{ report.total_profit }}</p>
+  <p>Total Expenses: ${{ report.total_expenses }}</p>
+  <a href="{% url 'analytics_dashboard' %}">Back to dashboard</a>
+{% endblock %}

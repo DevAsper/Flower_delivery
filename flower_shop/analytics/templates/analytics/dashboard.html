@@ -1,0 +1,13 @@
+<!-- apps/analytics/templates/analytics/dashboard.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Analytics Dashboard</h1>
+  <ul>
+    {% for report in reports %}
+      <li>
+        <a href="{% url 'generate_report' %}">{{ report.date }}: Sales ${{ report.total_sales }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

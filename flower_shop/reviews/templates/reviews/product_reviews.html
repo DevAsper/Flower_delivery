@@ -1,0 +1,16 @@
+<!-- apps/reviews/templates/reviews/product_reviews.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Reviews for {{ product.name }}</h1>
+  {% for review in reviews %}
+    <div>
+      <p><strong>{{ review.user.username }}</strong> rated it {{ review.rating }}/5</p>
+      <p>{{ review.review_text }}</p>
+      <p><em>{{ review.created_at }}</em></p>
+    </div>
+  {% empty %}
+    <p>No reviews yet.</p>
+  {% endfor %}
+  <a href="{% url 'add_review' product.id %}">Add a review</a>
+{% endblock %}

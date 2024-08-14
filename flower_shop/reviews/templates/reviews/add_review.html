@@ -1,0 +1,12 @@
+<!-- apps/reviews/templates/reviews/add_review.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Add a Review for {{ product.name }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+  </form>
+  <a href="{% url 'product_detail' product.id %}">Back to product</a>
+{% endblock %}
