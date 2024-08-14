@@ -1,0 +1,34 @@
+<!-- apps/orders/templates/orders/order_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Order List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.first_name }} {{ order.last_name }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.get_total_cost }}</td>
+          <td>
+            <a href="{% url 'order_detail' order.id %}">View</a> |
+            <a href="{% url 'change_order_status' order.id 'Processed' %}">Mark as Processed</a> |
+            <a href="{% url 'change_order_status' order.id 'Shipped' %}">Mark as Shipped</a> |
+            <a href="{% url 'change_order_status' order.id 'Delivered' %}">Mark as Delivered</a> |
+            <a href="{% url 'change_order_status' order.id 'Cancelled' %}">Cancel Order</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
